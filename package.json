@@ -14,7 +14,10 @@
   "license": "MIT",
   "author": "Warp Labs",
   "homepage": "https://developer.usewarp.net",
-  "repository": "github:WarpCompany/warp-node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarpCompany/warp-node.git"
+  },
   "bugs": "https://github.com/WarpCompany/warp-node/issues",
   "type": "module",
   "main": "./dist/index.cjs",
