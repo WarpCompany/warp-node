@@ -245,6 +245,7 @@ The constructor also throws if the key does not start with `sk_test_` or `sk_liv
 | Topic | Description |
 | ----- | ----------- |
 | [Pay with Warp](https://developer.usewarp.net/warp-pay) | Checkout sessions and the payment flow |
+| [Embedded checkout](https://developer.usewarp.net/warp-pay/embedded-checkout) | Show the checkout on your own page with the React, Vue or JavaScript packages |
 | [Webhooks](https://developer.usewarp.net/warp-pay/webhooks) | Signature verification and retries |
 | [ZK Proofs](https://developer.usewarp.net/zkproofs/introduction) | Circuits, policies, nonces and server-side verification |
 | [API reference](https://developer.usewarp.net/api-reference/introduction) | Endpoints, parameters and errors |
