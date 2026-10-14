@@ -1,5 +1,5 @@
 {
-  "name": "@usewarp/node",
+  "name": "@warpfi/node",
   "version": "0.1.0",
   "description": "Node.js SDK for the Warp API: checkout sessions, webhooks and ZK proof verification.",
   "keywords": [

@@ -36,8 +36,8 @@ export class Warp {
   constructor(apiKey: string, options: WarpOptions = {}) {
     if (typeof (globalThis as { window?: unknown }).window !== 'undefined' && !options.dangerouslyAllowBrowser) {
       throw new Error(
-        '@usewarp/node is a server SDK and must not run in a browser: it would expose your secret key. ' +
-          'Create checkout sessions on your server and use @usewarp/js in the browser. ' +
+        '@warpfi/node is a server SDK and must not run in a browser: it would expose your secret key. ' +
+          'Create checkout sessions on your server and use @warpfi/js in the browser. ' +
           'Pass { dangerouslyAllowBrowser: true } only if you understand the risk.',
       )
     }
@@ -47,7 +47,7 @@ export class Warp {
     }
     const match = /^sk_(test|live)_/.exec(apiKey)
     if (!match) {
-      const hint = apiKey.startsWith('pk_') ? ' Publishable keys cannot be used with @usewarp/node.' : ''
+      const hint = apiKey.startsWith('pk_') ? ' Publishable keys cannot be used with @warpfi/node.' : ''
       throw new Error(`Invalid API key: secret keys start with "sk_test_" or "sk_live_".${hint}`)
     }
     this.mode = match[1] as WarpMode

@@ -49,7 +49,7 @@ describe('Warp constructor', () => {
       Authorization: `Bearer ${TEST_KEY}`,
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      'User-Agent': '@usewarp/node/0.1.0',
+      'User-Agent': '@warpfi/node/0.1.0',
     })
   })
 })

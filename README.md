@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@usewarp/node"><img src="https://img.shields.io/npm/v/@usewarp/node?color=9E1FAA" alt="npm" /></a>
+  <a href="https://www.npmjs.com/package/@warpfi/node"><img src="https://img.shields.io/npm/v/@warpfi/node?color=9E1FAA" alt="npm" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT" /></a>
   <a href="https://developer.usewarp.net"><img src="https://img.shields.io/badge/docs-developer.usewarp.net-9E1FAA" alt="Docs" /></a>
 </p>
 
 ---
 
-Your server creates a checkout session with your secret key and sends the customer to its `checkout_url`. The customer pays on the hosted checkout, or in an embedded one with [@usewarp/js](https://github.com/WarpCompany/warp-js). Warp verifies the payment on-chain and sends a signed webhook to your server, which you check with this library before fulfilling the order.
+Your server creates a checkout session with your secret key and sends the customer to its `checkout_url`. The customer pays on the hosted checkout, or in an embedded one with [@warpfi/js](https://github.com/WarpCompany/warp-js). Warp verifies the payment on-chain and sends a signed webhook to your server, which you check with this library before fulfilling the order.
 
 > [!WARNING]
 > This project is under active development. Test with `sk_test_` keys on testnets before accepting mainnet payments.
@@ -38,7 +38,7 @@ Your server creates a checkout session with your secret key and sends the custom
 Requirements: Node.js 18 or later. Use it on your server only.
 
 ```bash
-npm install @usewarp/node
+npm install @warpfi/node
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ Create a session on your server and redirect the customer to it:
 
 ```ts
 import express from 'express'
-import Warp from '@usewarp/node'
+import Warp from '@warpfi/node'
 
 const warp = new Warp(process.env.WARP_SECRET_KEY!)
 const app = express()
@@ -66,7 +66,7 @@ app.post('/checkout', async (req, res) => {
 
 `amount_usd` accepts a number or a string with at most two decimals and is always returned as a string, for example `"49.00"`. Sessions expire after 30 minutes. `sk_test_` keys create testnet sessions and `sk_live_` keys create mainnet sessions; `warp.mode` is `'test'` or `'live'`.
 
-CommonJS works too: `const { Warp } = require('@usewarp/node')`.
+CommonJS works too: `const { Warp } = require('@warpfi/node')`.
 
 ### Return page
 
@@ -104,7 +104,7 @@ Warp signs each delivery with the `Warp-Signature` header. Verify it against the
 
 ```ts
 import express from 'express'
-import Warp, { WarpSignatureVerificationError } from '@usewarp/node'
+import Warp, { WarpSignatureVerificationError } from '@warpfi/node'
 
 const warp = new Warp(process.env.WARP_SECRET_KEY!)
 const app = express()
@@ -142,7 +142,7 @@ app.post('/webhooks/warp', express.raw({ type: 'application/json' }), async (req
 The webhook helpers do not use your API key. Import them directly where you have no client:
 
 ```ts
-import { verifySignature } from '@usewarp/node'
+import { verifySignature } from '@warpfi/node'
 
 const ok = verifySignature(rawBody, signatureHeader, process.env.WARP_WEBHOOK_SECRET!)
 ```
@@ -178,7 +178,7 @@ console.log(result.checks) // { offchain, policy, nonce?, nullifier?, onchain? }
 Every error is a `WarpError` with `message`, `status`, `code` and `requestId` (the `X-Request-Id` header; include it when contacting support):
 
 ```ts
-import { WarpError, WarpInvalidRequestError } from '@usewarp/node'
+import { WarpError, WarpInvalidRequestError } from '@warpfi/node'
 
 try {
   await warp.checkout.sessions.create({ amount_usd: '49.999' })

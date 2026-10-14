@@ -32,7 +32,7 @@ export class HttpClient {
     const url = this.buildUrl(spec.path, spec.query)
     const headers: Record<string, string> = {
       Accept: 'application/json',
-      'User-Agent': `@usewarp/node/${VERSION}`,
+      'User-Agent': `@warpfi/node/${VERSION}`,
     }
     if (spec.auth !== false) headers.Authorization = `Bearer ${this.options.apiKey}`
     let body: string | undefined
